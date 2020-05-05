@@ -8,7 +8,25 @@
 import scrapy
 
 
-class FirstscraperItem(scrapy.Item):
+class Quote(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    page = scrapy.Field()
+    text = scrapy.Field()
+    tags = scrapy.Field()
+    author = scrapy.Field(serializer=Author)
+
+
+class Author(scrapy.Item):
+    name = scrapy.Field()
+    birthday = scrapy.Field()
+    birthlocation = scrapy.Field()
+    shortdescription = scrapy.Field()
+    link = scrapy.Field()
+
+
+class Anime(scrapy.Item):
+    title = scrapy.Field()
+    episodes = scrapy.Field(serializer=int)
+    members = scrapy.Field(serializer=int)
+    favorites = scrapy.Field(serializer=int)
